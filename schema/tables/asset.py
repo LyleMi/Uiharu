@@ -22,10 +22,11 @@ class Asset(BaseTable):
     created = Column(TIMESTAMP, default=now)
 
     @classmethod
-    def add(cls, name, target, desc):
+    def add(cls, pid, atype, data, desc):
         o = cls()
-        o.name = name
-        o.target = target
+        o.pid = pid
+        o.atype = atype
+        o.data = data
         o.desc = desc
         cls.db.add(o)
         cls.db.commit()

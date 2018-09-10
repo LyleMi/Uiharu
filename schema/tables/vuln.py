@@ -17,14 +17,16 @@ class Vuln(BaseTable):
     uid = Column(VARCHAR(32), primary_key=True, default=guid)
     pid = Column(VARCHAR(32))
     name = Column(VARCHAR(200))
+    vtype = Column(VARCHAR(50))
     desc = Column(VARCHAR(1000))
     created = Column(TIMESTAMP, default=now)
 
     @classmethod
-    def add(cls, name, target, desc):
+    def add(cls, pid, name, vtype, desc):
         p = Vuln()
+        p.pid = pid
         p.name = name
-        p.target = target
+        p.vtype = vtype
         p.desc = desc
         cls.db.add(p)
         cls.db.commit()
