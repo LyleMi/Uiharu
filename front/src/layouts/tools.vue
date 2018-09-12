@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav-bar></nav-bar>
-    <foot-bar class="footbar"></foot-bar>
+    <foot-bar></foot-bar>
   </div>
 </template>
 
