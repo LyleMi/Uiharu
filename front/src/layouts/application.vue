@@ -8,7 +8,7 @@
         </el-aside>
         <el-main>
           <el-table
-            :data="projects"
+            :data="applications"
             style="width: 100%;text-align: left;"
           >
             <el-table-column
@@ -18,8 +18,8 @@
             >
             </el-table-column>
             <el-table-column
-              prop="target"
-              label="目标"
+              prop="data"
+              label="数据"
               width="180"
             >
             </el-table-column>
@@ -46,7 +46,7 @@
                   详情
                 </el-button>
                 <el-button
-                  @click.native.prevent="deleteProject(scope.$index, projects)"
+                  @click.native.prevent="deleteApplication(scope.$index, applications)"
                   type="text"
                   size="small">
                   移除
@@ -66,7 +66,7 @@ import { NavBar, FootBar } from '@/components/global'
 import { SideBar } from '@/components/project'
 // import { api } from '@/utils/api'
 export default {
-  name: 'Project',
+  name: 'Application',
   components: {
     NavBar,
     FootBar,
@@ -76,16 +76,16 @@ export default {
   },
   data () {
     return {
-      projects: [{
+      applications: [{
         name: '测试项目',
-        target: 'google.com',
+        data: 'google.com',
         desc: 'for test',
         created: '2018-9-30'
       }]
     }
   },
   methods: {
-    deleteProject (index, rows) {
+    deleteApplication (index, rows) {
       rows.splice(index, 1)
     }
   }
