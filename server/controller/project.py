@@ -75,7 +75,7 @@ class VulnHandler(BaseHandler):
 class ApplicationHandler(BaseHandler):
 
     def get(self):
-        return self.ok(Vuln.getAll(True))
+        return self.ok(Application.getAll(True))
 
     def post(self):
         pid = self.get_argument('pid', '')
@@ -89,4 +89,3 @@ class ApplicationHandler(BaseHandler):
             return self.error(404, "desc is required")
         o = Application.add(pid, data, desc)
         return self.ok("suc")
-

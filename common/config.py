@@ -45,4 +45,7 @@ settings = {
 handlers = [
     (r"/", "server.controller.main.MainHandler"),
     (r"/project", "server.controller.project.ProjectHandler"),
+    (r"/asset", "server.controller.project.AssetHandler"),
+    (r"/vuln", "server.controller.project.VulnHandler"),
+    (r"/application", "server.controller.project.ApplicationHandler"),
 ]
