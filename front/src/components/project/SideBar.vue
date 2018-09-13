@@ -1,8 +1,6 @@
 <template>
     <div>
-      <el-menu
-        class="el-menu-vertical-demo"
-        >
+      <el-menu>
         <el-menu-item>
           <router-link to="/">
             所有项目

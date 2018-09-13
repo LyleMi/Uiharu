@@ -1,8 +1,7 @@
 <template>
     <div>
       <nav-bar></nav-bar>
-      <div>
-      <el-container>
+      <el-container style="min-height:300px;">
         <el-aside width="140px">
           <side-bar></side-bar>
         </el-aside>
@@ -56,7 +55,6 @@
           </el-table>
         </el-main>
       </el-container>
-      </div>
       <foot-bar></foot-bar>
     </div>
 </template>
