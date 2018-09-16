@@ -6,6 +6,14 @@
           <side-bar></side-bar>
         </el-aside>
         <el-main>
+          <el-row>
+            <el-col :span="6">
+              <el-input placeholder="过滤"></el-input>
+            </el-col>
+            <el-col :span="6" :offset="6">
+              <el-button type="primary" @click="dialogVisible=true">新增</el-button>
+            </el-col>
+          </el-row>
           <el-table
             :data="projects"
             style="width: 100%;text-align: left;"
@@ -53,8 +61,26 @@
               </template>
             </el-table-column>
           </el-table>
+          <el-dialog title="新增应用" :visible.sync="dialogVisible">
+          <el-form :label-position="right" label-width="80px" :model="form">
+            <el-form-item label="项目名称">
+              <el-input v-model="form.name" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="项目目标">
+              <el-input v-model="form.target" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="项目描述">
+              <el-input v-model="form.name" autocomplete="off"></el-input>
+            </el-form-item>
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible=false">取 消</el-button>
+            <el-button type="primary" @click="dialogVisible=false">确 定</el-button>
+          </div>
+        </el-dialog>
         </el-main>
       </el-container>
+
       <foot-bar></foot-bar>
     </div>
 </template>
@@ -79,7 +105,13 @@ export default {
         target: 'google.com',
         desc: 'for test',
         created: '2018-9-30'
-      }]
+      }],
+      form: {
+        name: '',
+        target: '',
+        desc: ''
+      },
+      dialogVisible: false
     }
   },
   methods: {
