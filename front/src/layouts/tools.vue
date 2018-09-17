@@ -61,6 +61,7 @@ export default {
         ret = ret << 8
         ret += parseInt(decip[i])
       }
+      ret = ret >>> 0
       return ret
     },
     hexip: function () {
@@ -82,6 +83,7 @@ export default {
         ret = ret << 8
         ret += parseInt(hexintip[i])
       }
+      ret = ret >>> 0
       return '0x' + ret.toString(16)
     }
   },
