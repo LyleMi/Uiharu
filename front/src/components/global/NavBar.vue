@@ -17,7 +17,7 @@
         </router-link>
       </el-menu-item>
       <el-menu-item index="3">
-        <router-link to="/tools">
+        <router-link to="/ipconv">
           辅助工具
         </router-link>
       </el-menu-item>

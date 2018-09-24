@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Project from '@/layouts/project'
-import Domain from '@/layouts/domain'
-import Application from '@/layouts/application'
-import Vuln from '@/layouts/vuln'
-import Tools from '@/layouts/tools'
+import Project from '@/layouts/project/project'
+import Domain from '@/layouts/project/domain'
+import Application from '@/layouts/project/application'
+import Vuln from '@/layouts/project/vuln'
+import IPConv from '@/layouts/tools/ipconv'
 
 Vue.use(Router)
 
@@ -31,9 +31,9 @@ export default new Router({
       component: Vuln
     },
     {
-      path: '/tools',
-      name: 'Tools',
-      component: Tools
+      path: '/ipconv',
+      name: 'IPConv',
+      component: IPConv
     }
   ]
 })

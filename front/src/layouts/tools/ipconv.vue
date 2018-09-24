@@ -1,38 +1,46 @@
 <template>
   <div>
     <nav-bar></nav-bar>
-    <!-- ip convert -->
-    <h3>IP 转换</h3>
-    <el-form label-width="100px">
-      <el-form-item label="普通形式">
-        <el-input v-model="rawip" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="八进制格式">
-        <el-input v-model="octip" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="十进制格式">
-        <el-input v-model="decip" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="十六进制格式">
-        <el-input v-model="hexip" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="十六进制整数">
-        <el-input v-model="hexintip" autocomplete="off"></el-input>
-      </el-form-item>
-    </el-form>
-
+      <el-container style="min-height:300px;">
+        <el-aside width="140px">
+          <side-bar></side-bar>
+        </el-aside>
+        <el-main>
+        <!-- ip convert -->
+        <h3>IP 转换</h3>
+        <el-form label-width="100px">
+          <el-form-item label="普通形式">
+            <el-input v-model="rawip" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="八进制格式">
+            <el-input v-model="octip" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="十进制格式">
+            <el-input v-model="decip" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="十六进制格式">
+            <el-input v-model="hexip" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="十六进制整数">
+            <el-input v-model="hexintip" autocomplete="off"></el-input>
+          </el-form-item>
+        </el-form>
+        </el-main>
+      </el-container>
     <foot-bar></foot-bar>
   </div>
 </template>
 
 <script>
 import { NavBar, FootBar } from '@/components/global'
+import { SideBar } from '@/components/tools'
 // import { api } from '@/utils/api'
 export default {
-  name: 'Tools',
+  name: 'IPConv',
   components: {
     NavBar,
-    FootBar
+    FootBar,
+    SideBar
   },
   created () {
   },
