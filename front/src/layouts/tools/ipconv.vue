@@ -34,7 +34,6 @@
 <script>
 import { NavBar, FootBar } from '@/components/global'
 import { SideBar } from '@/components/tools'
-// import { api } from '@/utils/api'
 export default {
   name: 'IPConv',
   components: {

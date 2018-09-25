@@ -5,6 +5,7 @@ import Domain from '@/layouts/project/domain'
 import Application from '@/layouts/project/application'
 import Vuln from '@/layouts/project/vuln'
 import IPConv from '@/layouts/tools/ipconv'
+import Hash from '@/layouts/tools/hash'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/ipconv',
       name: 'IPConv',
       component: IPConv
+    },
+    {
+      path: '/hash',
+      name: 'Hash',
+      component: Hash
     }
   ]
 })
