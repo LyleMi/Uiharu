@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS `saker`;
+DROP DATABASE IF EXISTS `uiharu`;
 
-CREATE DATABASE `saker` DEFAULT CHARACTER SET utf8 collate utf8_general_ci;
+CREATE DATABASE `uiharu` DEFAULT CHARACTER SET utf8 collate utf8_general_ci;
 
-use `saker`;
+use `uiharu`;
 
 CREATE TABLE `project` (
   `uid` VARCHAR(32) NOT NULL,
@@ -50,8 +50,8 @@ CREATE TABLE `application` (
   PRIMARY KEY (`uid`)
 );
 
-CREATE USER IF NOT EXISTS 'saker'@'localhost' IDENTIFIED BY 'random_password';
-GRANT all privileges ON saker.* TO 'saker'@'localhost';
+CREATE USER IF NOT EXISTS 'uiharu'@'localhost' IDENTIFIED BY 'random_password';
+GRANT all privileges ON uiharu.* TO 'uiharu'@'localhost';
 
 CREATE USER IF NOT EXISTS 'backup'@'localhost' IDENTIFIED BY 'another_random_password';
-GRANT SELECT ON saker.* TO 'backup'@'localhost';
+GRANT SELECT ON uiharu.* TO 'backup'@'localhost';
