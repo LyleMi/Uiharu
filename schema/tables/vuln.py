@@ -20,14 +20,4 @@ class Vuln(BaseTable):
     vtype = Column(VARCHAR(50))
     desc = Column(VARCHAR(1000))
     created = Column(TIMESTAMP, default=now)
-
-    @classmethod
-    def add(cls, pid, name, vtype, desc):
-        p = Vuln()
-        p.pid = pid
-        p.name = name
-        p.vtype = vtype
-        p.desc = desc
-        cls.db.add(p)
-        cls.db.commit()
-        return True
+    required = ['pid', 'vtype', 'data', 'desc']

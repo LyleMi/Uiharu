@@ -20,14 +20,4 @@ class Asset(BaseTable):
     data = Column(VARCHAR(200))
     desc = Column(VARCHAR(1000))
     created = Column(TIMESTAMP, default=now)
-
-    @classmethod
-    def add(cls, pid, atype, data, desc):
-        o = cls()
-        o.pid = pid
-        o.atype = atype
-        o.data = data
-        o.desc = desc
-        cls.db.add(o)
-        cls.db.commit()
-        return True
+    required = ['pid', 'atype', 'data', 'desc']

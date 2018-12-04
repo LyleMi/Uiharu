@@ -19,13 +19,4 @@ class Application(BaseTable):
     data = Column(VARCHAR(100))
     desc = Column(VARCHAR(1000))
     created = Column(TIMESTAMP, default=now)
-
-    @classmethod
-    def add(cls, pid, data, desc):
-        o = cls()
-        o.pid = pid
-        o.data = data
-        o.desc = desc
-        cls.db.add(o)
-        cls.db.commit()
-        return True
+    required = ['pid', 'data', 'desc']

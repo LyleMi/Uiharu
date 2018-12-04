@@ -19,13 +19,4 @@ class Project(BaseTable):
     target = Column(VARCHAR(200))
     desc = Column(VARCHAR(1000))
     created = Column(TIMESTAMP, default=now)
-
-    @classmethod
-    def add(cls, name, target, desc):
-        p = Project()
-        p.name = name
-        p.target = target
-        p.desc = desc
-        cls.db.add(p)
-        cls.db.commit()
-        return True
+    required = ['name', 'target', 'desc']
