@@ -21,10 +21,19 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def error(self, status_code, msg):
         self.set_status(status_code)
+        self.set_header('Content-Type', 'application/json; charset="utf-8"')
         self.write(json.dumps({"msg": msg}))
 
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "X-Requested-With")
+        self.set_header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST')
+
     def getObject(self, cls):
-        return self.ok(cls.getAll(True))
+        uid = self.get_argument('uid', None)
+        if uid is None:
+            return self.ok(cls.getAll(True))
+        return cls.get(self.db, uid)
 
     def postObject(self, cls):
         data = {}
