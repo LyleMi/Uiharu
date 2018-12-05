@@ -102,4 +102,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+server/static
+
 test.py
