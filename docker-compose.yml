@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+    web:
+        build: 
+            context: ./docker
+            dockerfile: Dockerfile-web
+        volumes:
+            - .:/home/web:ro
+        command: python server.py
+        restart: "always"
+        ports: 
+            - "8888:8888"
+        user: web
+        depends_on:
+          - db
+        links:
+            - db
+        networks:
+            - default
+    db:
+        image: mysql:5.7
+        expose: 
+            - "3306"
+        environment:
+            MYSQL_DATABASE: uiharu
+            MYSQL_USER: uiharu
+            MYSQL_PASSWORD: uiharu
+            MYSQL_ROOT_PASSWORD: uiharu 
+        volumes:
+            - ./schema:/docker-entrypoint-initdb.d
+        networks:
+            - default
