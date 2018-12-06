@@ -13,12 +13,29 @@ services:
             - "8888:8888"
         user: web
         depends_on:
-          - db
+            - mysqldb
+            - rabbitmq
         links:
-            - db
+            - mysqldb
+            - rabbitmq
         networks:
             - default
-    db:
+    worker:
+        build:
+            context: ./docker
+            dockerfile: Dockerfile-worker
+        depends_on:
+            - mysqldb
+            - rabbitmq
+        links:
+            - mysqldb
+            - rabbitmq
+        depends_on:
+            - mysqldb
+            - rabbitmq
+        networks:
+            - default
+    mysqldb:
         image: mysql:5.7
         expose: 
             - "3306"
@@ -29,5 +46,9 @@ services:
             MYSQL_ROOT_PASSWORD: uiharu 
         volumes:
             - ./schema:/docker-entrypoint-initdb.d
+        networks:
+            - default
+    rabbitmq:
+        image: rabbitmq:3.7
         networks:
             - default
