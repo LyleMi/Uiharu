@@ -11,6 +11,11 @@
             哈希计算
           </router-link>
         </el-menu-item>
+        <el-menu-item index="3">
+          <router-link to="/encode">
+            编码
+          </router-link>
+        </el-menu-item>
       </el-menu>
     </div>
 </template>
