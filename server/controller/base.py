@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import json
+import tornado.escape
 import tornado.web
 
 
@@ -10,6 +11,21 @@ class BaseHandler(tornado.web.RequestHandler):
     @property
     def db(self):
         return self.application.db
+
+    def prepare(self):
+        super(BaseHandler, self).prepare()
+        self.json_data = None
+        if self.request.body:
+            try:
+                self.json_data = tornado.escape.json_decode(self.request.body)
+            except ValueError as e:
+                print(e)
+
+    def get_argument(self, arg, default=None):
+        if self.request.method in ['POST', 'PUT'] and self.json_data:
+            return self.json_data.get(arg, default)
+        else:
+            return super(BaseHandler, self).get_argument(arg, default)
 
     def on_finish(self):
         self.db.flush()
@@ -26,8 +42,8 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "*")
-        self.set_header("Access-Control-Allow-Headers", "X-Requested-With")
-        self.set_header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST')
+        self.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type")
+        self.set_header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE')
 
     def getObject(self, cls):
         uid = self.get_argument('uid', None)
@@ -40,7 +56,7 @@ class BaseHandler(tornado.web.RequestHandler):
         for r in cls.required:
             data[r] = self.get_argument(r, None)
             if data[r] is None:
-                return self.error(404, "%s is required" % s)
+                return self.error(404, "%s is required" % r)
         o = cls.add(**data)
         if o:
             return self.ok("suc")

@@ -17,6 +17,6 @@ class Project(BaseTable):
     uid = Column(VARCHAR(32), primary_key=True, default=guid)
     name = Column(VARCHAR(200))
     target = Column(VARCHAR(200))
-    desc = Column(VARCHAR(1000))
+    desc = Column(VARCHAR(4096))
     created = Column(TIMESTAMP, default=now)
     required = ['name', 'target', 'desc']

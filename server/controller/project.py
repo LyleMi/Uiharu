@@ -23,6 +23,9 @@ class ProjectHandler(BaseHandler):
     def delete(self):
         self.deleteObject(Project)
 
+    def options(self):
+        pass
+
 
 class AssetHandler(BaseHandler):
 

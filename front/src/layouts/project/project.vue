@@ -33,7 +33,7 @@
             <el-table-column
               prop="desc"
               label="描述"
-              width="180"
+              width="500"
             >
             </el-table-column>
             <el-table-column
@@ -70,12 +70,12 @@
               <el-input v-model="form.target" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="项目描述">
-              <el-input v-model="form.name" autocomplete="off"></el-input>
+              <el-input v-model="form.desc" rows=10 type="textarea" autocomplete="off"></el-input>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogVisible=false">取 消</el-button>
-            <el-button type="primary" @click="dialogVisible=false">确 定</el-button>
+            <el-button  @click="dialogVisible=false">取 消</el-button>
+            <el-button type="primary" @click="createData()">确 定</el-button>
           </div>
         </el-dialog>
         </el-main>
@@ -88,7 +88,7 @@
 <script>
 import { NavBar, FootBar } from '@/components/global'
 import { SideBar } from '@/components/project'
-import { fetchList } from '@/api/project'
+import { getProjects, createProject, deleteProject } from '@/api/project'
 export default {
   name: 'Project',
   components: {
@@ -117,11 +117,19 @@ export default {
   },
   methods: {
     getList () {
-      fetchList().then(response => {
+      getProjects().then(response => {
         this.projects = response.data.data
       })
     },
+    createData () {
+      createProject(this.form).then(() => {
+        this.getList()
+      })
+      this.dialogVisible = false
+    },
     deleteProject (index, rows) {
+      deleteProject({'uid': rows[index].uid}).then(() => {
+      })
       rows.splice(index, 1)
     }
   }
