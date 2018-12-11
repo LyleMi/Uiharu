@@ -62,7 +62,7 @@
             </el-table-column>
           </el-table>
           <el-dialog title="新增应用" :visible.sync="dialogVisible">
-          <el-form :label-position="right" label-width="80px" :model="form">
+          <el-form label-width="80px" :model="form">
             <el-form-item label="项目名称">
               <el-input v-model="form.name" autocomplete="off"></el-input>
             </el-form-item>
@@ -88,7 +88,7 @@
 <script>
 import { NavBar, FootBar } from '@/components/global'
 import { SideBar } from '@/components/project'
-// import { api } from '@/utils/api'
+import { fetchList } from '@/api/project'
 export default {
   name: 'Project',
   components: {
@@ -97,6 +97,7 @@ export default {
     SideBar
   },
   created () {
+    this.getList()
   },
   data () {
     return {
@@ -115,6 +116,11 @@ export default {
     }
   },
   methods: {
+    getList () {
+      fetchList().then(response => {
+        this.projects = response.data.data
+      })
+    },
     deleteProject (index, rows) {
       rows.splice(index, 1)
     }

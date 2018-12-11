@@ -62,7 +62,6 @@
 <script>
 import { NavBar, FootBar } from '@/components/global'
 import { SideBar } from '@/components/project'
-// import { api } from '@/utils/api'
 export default {
   name: 'Application',
   components: {
