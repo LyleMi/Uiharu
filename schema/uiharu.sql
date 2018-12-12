@@ -20,20 +20,28 @@ CREATE TABLE `vuln` (
   `name` VARCHAR(100) NULL,
   -- xss / weak pwd / xxx
   `vtype` VARCHAR(50) NOT NULL,
-  `desc` VARCHAR(1000) NULL,
+  `desc` VARCHAR(1024) NULL,
   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ip / domain
-CREATE TABLE `asset` (
+CREATE TABLE `domain` (
   `uid` VARCHAR(32) NOT NULL,
   -- project id
   `pid` VARCHAR(32) NOT NULL,
-  `atype` VARCHAR(50) NOT NULL,
-  -- domain, ip
-  `data` VARCHAR(100) NULL,
-  `desc` VARCHAR(1000) NULL,
+  `domain` VARCHAR(200) NULL,
+  `ips` VARCHAR(200) NULL,
+  `desc` VARCHAR(1024) NULL,
+  `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`uid`)
+);
+
+CREATE TABLE `ip` (
+  `uid` VARCHAR(32) NOT NULL,
+  -- project id
+  `pid` VARCHAR(32) NOT NULL,
+  `ip` VARCHAR(200) NULL,
+  `desc` VARCHAR(1024) NULL,
   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`)
 );
@@ -45,7 +53,7 @@ CREATE TABLE `application` (
   `pid` VARCHAR(32) NOT NULL,
   -- 8.8.8.8:80 http
   `data` VARCHAR(100) NULL,
-  `desc` VARCHAR(1000) NULL,
+  `desc` VARCHAR(1024) NULL,
   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`)
 );
