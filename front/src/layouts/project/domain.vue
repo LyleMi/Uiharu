@@ -17,8 +17,14 @@
             >
             </el-table-column>
             <el-table-column
-              prop="data"
-              label="数据"
+              prop="domain"
+              label="域名"
+              width="180"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="ips"
+              label="IPS"
               width="180"
             >
             </el-table-column>
@@ -62,7 +68,7 @@
 <script>
 import { NavBar, FootBar } from '@/components/global'
 import { SideBar } from '@/components/project'
-// import { api } from '@/utils/api'
+import { getDomains } from '@/api/domain'
 export default {
   name: 'Domain',
   components: {
@@ -71,18 +77,25 @@ export default {
     SideBar
   },
   created () {
+    this.getList()
   },
   data () {
     return {
       domains: [{
         name: '测试项目',
-        data: 'google.com',
+        domain: 'google.com',
+        ips: '1.1.1.1,8.8.8.8',
         desc: 'for test',
         created: '2018-9-30'
       }]
     }
   },
   methods: {
+    getList () {
+      getDomains().then(response => {
+        this.domains = response.data.data
+      })
+    },
     deleteDomain (index, rows) {
       rows.splice(index, 1)
     }

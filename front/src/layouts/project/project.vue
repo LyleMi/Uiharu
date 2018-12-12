@@ -48,13 +48,11 @@
             >
               <template slot-scope="scope">
                 <el-button
-                  type="text"
                   size="small">
                   详情
                 </el-button>
                 <el-button
                   @click.native.prevent="deleteProject(scope.$index, projects)"
-                  type="text"
                   size="small">
                   移除
                 </el-button>
