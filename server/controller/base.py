@@ -33,24 +33,25 @@ class JSONBaseHandler(BaseHandler):
         else:
             return super(BaseHandler, self).get_argument(arg, default)
 
-    def on_finish(self):
-        self.db.flush()
-        self.db.close()
-
     def ok(self, data):
-        self.set_header('Content-Type', 'application/json; charset="utf-8"')
         self.write(json.dumps({'status': 'ok', 'data': data}))
 
     def error(self, status_code, msg):
         self.set_status(status_code)
-        self.set_header('Content-Type', 'application/json; charset="utf-8"')
         self.write(json.dumps({'status': 'error', 'msg': msg}))
 
     def set_default_headers(self):
         super(JSONBaseHandler, self).set_default_headers()
+        self.set_header('Content-Type', 'application/json; charset="utf-8"')
         self.set_header('Access-Control-Allow-Origin', '*')
         self.set_header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type')
         self.set_header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE')
+
+    '''
+    def on_finish(self):
+        self.db.flush()
+        self.db.close()
+    '''
 
     def get(self):
         cls = self.objcls
