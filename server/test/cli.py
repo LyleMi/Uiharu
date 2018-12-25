@@ -16,8 +16,11 @@ class Cli(Saker):
         self.post("project", data=data)
         print(self.lastr.content)
 
-    def getProject(self):
-        self.get("project")
+    def getProject(self, uid=None):
+        params = {}
+        if uid is not None:
+            params["uid"] = uid
+        self.get("project", params=params)
         print(self.lastr.content)
 
     def updateProject(self, uid, name="name2333", target="target", desc="desc"):
@@ -78,8 +81,9 @@ if __name__ == '__main__':
     uid = "c2809c854dc34d969c7d3556b49d3ad8"
     # c.addProject()
     # c.deleteProject()
-    c.updateProject(uid)
+    # c.updateProject(uid)
     c.getProject()
+    c.getProject('2')
     # c.addAsset()
     # c.getAsset()
     # c.addVuln()

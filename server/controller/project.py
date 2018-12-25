@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import tornado.web
-from server.controller.base import BaseHandler
+from server.controller.base import JSONBaseHandler
 from schema.tables.application import Application
 from schema.tables.project import Project
 from schema.tables.domain import Domain
@@ -10,79 +10,26 @@ from schema.tables.ip import IP
 from schema.tables.vuln import Vuln
 
 
-class ProjectHandler(BaseHandler):
+class ProjectHandler(JSONBaseHandler):
 
-    def get(self):
-        self.getObject(Project)
-
-    def post(self):
-        self.postObject(Project)
-
-    def put(self):
-        self.putObject(Project)
-
-    def delete(self):
-        self.deleteObject(Project)
-
-    def options(self):
-        pass
+    objcls = Project
 
 
-class DomainHandler(BaseHandler):
+class DomainHandler(JSONBaseHandler):
 
-    def get(self):
-        self.getObject(Domain)
-
-    def post(self):
-        self.postObject(Domain)
-
-    def put(self):
-        self.putObject(Domain)
-
-    def delete(self):
-        self.deleteObject(Domain)
+    objcls = Domain
 
 
-class IPHandler(BaseHandler):
+class IPHandler(JSONBaseHandler):
 
-    def get(self):
-        self.getObject(IP)
-
-    def post(self):
-        self.postObject(IP)
-
-    def put(self):
-        self.putObject(IP)
-
-    def delete(self):
-        self.deleteObject(IP)
+    objcls = IP
 
 
-class VulnHandler(BaseHandler):
+class VulnHandler(JSONBaseHandler):
 
-    def get(self):
-        self.getObject(Vuln)
-
-    def post(self):
-        self.postObject(Vuln)
-
-    def put(self):
-        self.putObject(Vuln)
-
-    def delete(self):
-        self.deleteObject(Vuln)
+    objcls = Vuln
 
 
-class ApplicationHandler(BaseHandler):
+class ApplicationHandler(JSONBaseHandler):
 
-    def get(self):
-        self.getObject(Application)
-
-    def post(self):
-        self.postObject(Application)
-
-    def put(self):
-        self.putObject(Application)
-
-    def delete(self):
-        self.deleteObject(Application)
+    objcls = Application

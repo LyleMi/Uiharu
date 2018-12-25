@@ -26,15 +26,52 @@ class BaseTable(object):
         return s
 
     @classmethod
-    def getAll(cls, toStr=False, blist=[]):
-        if toStr:
-            return [i.toStr(blist) for i in cls.db.query(cls).all()]
-        else:
-            return cls.db.query(cls).all()
+    def getAll(cls, toStr=False, blist=[],
+               limit=-1, offset=0,
+               sort=None,
+               filterKey=None, filterValue=None
+               ):
+        try:
+            cls.db.commit()
+            ret = cls.db.query(cls)
+            if filterKey and filterValue:
+                ret = ret.filter(
+                    getattr(cls, filterKey).like('%%%s%%' % filterValue)
+                )
+            count = ret.count()
+            if sort:
+                ret = ret.order_by(sort)
+            if limit != -1:
+                ret = ret.limit(limit).offset(offset)
+            else:
+                ret = ret.all()
+            if toStr:
+                return [i.toStr(blist) for i in ret], count
+            else:
+                return ret, count
+        except Exception as e:
+            print(repr(e))
+            cls.db.rollback()
+            return False
+
+    @classmethod
+    def count(cls, filterKey=None, filterValue=None):
+        ret = cls.db.query(cls)
+        if filterKey and filterValue:
+            ret = ret.filter(
+                getattr(cls, filterKey).like('%%%s%%' % filterValue)
+            )
+        return ret.count()
 
     @classmethod
     def get(cls, uid):
-        obj = cls.db.query(cls).filter(cls.uid == uid)
+        try:
+            cls.db.commit()
+            obj = cls.db.query(cls).filter(cls.uid == uid)
+        except Exception as e:
+            print(repr(e))
+            cls.db.rollback()
+            return False
         if obj.count() < 1:
             return None
         else:
@@ -42,24 +79,39 @@ class BaseTable(object):
 
     @classmethod
     def add(cls, **kwargs):
-        o = cls()
-        for key in kwargs:
-            o.__setattr__(key, kwargs[key])
-        cls.db.add(o)
-        cls.db.commit()
+        try:
+            o = cls()
+            for key in kwargs:
+                o.__setattr__(key, kwargs[key])
+            cls.db.add(o)
+            cls.db.commit()
+        except Exception as e:
+            print(repr(e))
+            cls.db.rollback()
+            return False
         return True
 
     @classmethod
     def update(cls, uid, **kwargs):
-        cls.db.query(cls).filter(cls.uid == uid).update(kwargs)
-        cls.db.commit()
-        return True
+        try:
+            cls.db.query(cls).filter(cls.uid == uid).update(kwargs)
+            cls.db.commit()
+            return True
+        except Exception as e:
+            print(repr(e))
+            cls.db.rollback()
+            return False
 
     @classmethod
     def delete(cls, uid):
-        obj = cls.db.query(cls).filter(cls.uid == uid).delete()
-        cls.db.commit()
-        return True
+        try:
+            obj = cls.db.query(cls).filter(cls.uid == uid).delete()
+            cls.db.commit()
+            return True
+        except Exception as e:
+            print(repr(e))
+            cls.db.rollback()
+            return False
 
 
 def DBSession(forceNew=False):
