@@ -1,20 +1,14 @@
 <template>
     <div>
       <el-menu>
-        <el-menu-item index="1">
-          <router-link to="/ipconv">
-            IP格式转换
-          </router-link>
+        <el-menu-item index="1" @click="jump('/ipconv')">
+          IP格式转换
         </el-menu-item>
-        <el-menu-item index="2">
-          <router-link to="/hash">
-            哈希计算
-          </router-link>
+        <el-menu-item index="2" @click="jump('/hash')">
+          哈希计算
         </el-menu-item>
-        <el-menu-item index="3">
-          <router-link to="/encode">
-            编码
-          </router-link>
+        <el-menu-item index="3" @click="jump('/encode')">
+          编码
         </el-menu-item>
       </el-menu>
     </div>
@@ -22,6 +16,11 @@
 
 <script>
 export default {
+  methods: {
+    jump (url) {
+      this.$router.push(url)
+    }
+  }
 }
 </script>
 

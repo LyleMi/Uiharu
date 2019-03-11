@@ -1,25 +1,25 @@
 <template>
     <div>
       <el-menu>
-        <el-menu-item index="1">
-          <router-link to="/">
+        <el-menu-item index="1" @click="jump('/')">
+          <div>
             所有项目
-          </router-link>
+          </div>
         </el-menu-item>
-        <el-menu-item index="2">
-          <router-link to="/domain">
+        <el-menu-item index="2" @click="jump('/domain')">
+          <div>
             域名列表
-          </router-link>
+          </div>
         </el-menu-item>
-        <el-menu-item index="3">
-          <router-link to="/application">
+        <el-menu-item index="3" @click="jump('/application')">
+          <div>
             应用列表
-          </router-link>
+          </div>
         </el-menu-item>
-        <el-menu-item index="4">
-          <router-link to="/vuln">
+        <el-menu-item index="4" @click="jump('/vuln')">
+          <div>
             漏洞列表
-          </router-link>
+          </div>
         </el-menu-item>
       </el-menu>
     </div>
@@ -27,6 +27,11 @@
 
 <script>
 export default {
+  methods: {
+    jump (url) {
+      this.$router.push(url)
+    }
+  }
 }
 </script>
 

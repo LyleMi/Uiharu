@@ -6,20 +6,16 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <el-menu-item index="1">
-        <router-link to="/" class="banner" exact>
-        Uiharu
-        </router-link>
+      <el-menu-item index="1" @click="jump('/')">
+        <div class="banner">
+          Uiharu
+        </div>
       </el-menu-item>
-      <el-menu-item index="2">
-        <router-link to="/">
-          项目管理
-        </router-link>
+      <el-menu-item index="2" @click="jump('/')">
+        项目管理
       </el-menu-item>
-      <el-menu-item index="3">
-        <router-link to="/ipconv">
-          辅助工具
-        </router-link>
+      <el-menu-item index="3" @click="jump('/ipconv')">
+        辅助工具
       </el-menu-item>
     </el-menu>
   </div>
@@ -27,7 +23,11 @@
 
 <script>
 export default {
-
+  methods: {
+    jump (url) {
+      this.$router.push(url)
+    }
+  }
 }
 </script>
 

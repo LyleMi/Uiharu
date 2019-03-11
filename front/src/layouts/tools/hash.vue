@@ -9,34 +9,34 @@
         <h3>哈希计算</h3>
         <el-form label-width="100px">
           <el-form-item label="输入">
-            <el-input v-model="str" autocomplete="off"></el-input>
+            <el-input v-model="str" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="密钥">
-            <el-input v-model="key" autocomplete="off"></el-input>
+            <el-input v-model="key" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="md5">
-            <el-input v-model="md5" autocomplete="off"></el-input>
+            <el-input v-model="md5" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="sha1">
-            <el-input v-model="sha1" autocomplete="off"></el-input>
+            <el-input v-model="sha1" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="sha256">
-            <el-input v-model="sha256" autocomplete="off"></el-input>
+            <el-input v-model="sha256" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="sha512">
-            <el-input v-model="sha512" autocomplete="off"></el-input>
+            <el-input v-model="sha512" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="hmac(md5)">
-            <el-input v-model="hmd5" autocomplete="off"></el-input>
+            <el-input v-model="hmd5" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="hmac(sha1)">
-            <el-input v-model="hsha1" autocomplete="off"></el-input>
+            <el-input v-model="hsha1" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="hmac(sha256)">
-            <el-input v-model="hsha256" autocomplete="off"></el-input>
+            <el-input v-model="hsha256" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="hmac(sha512)">
-            <el-input v-model="hsha512" autocomplete="off"></el-input>
+            <el-input v-model="hsha512" auto-complete="off"></el-input>
           </el-form-item>
         </el-form>
         </el-main>

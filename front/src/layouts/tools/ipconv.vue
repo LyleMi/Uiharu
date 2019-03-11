@@ -10,19 +10,19 @@
         <h3>IP 转换</h3>
         <el-form label-width="100px">
           <el-form-item label="普通形式">
-            <el-input v-model="rawip" autocomplete="off"></el-input>
+            <el-input v-model="rawip" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="八进制格式">
-            <el-input v-model="octip" autocomplete="off"></el-input>
+            <el-input v-model="octip" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="十进制格式">
-            <el-input v-model="decip" autocomplete="off"></el-input>
+            <el-input v-model="decip" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="十六进制格式">
-            <el-input v-model="hexip" autocomplete="off"></el-input>
+            <el-input v-model="hexip" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="十六进制整数">
-            <el-input v-model="hexintip" autocomplete="off"></el-input>
+            <el-input v-model="hexintip" auto-complete="off"></el-input>
           </el-form-item>
         </el-form>
         </el-main>

@@ -62,13 +62,13 @@
           <el-dialog title="新增应用" :visible.sync="dialogVisible">
           <el-form label-width="80px" :model="form">
             <el-form-item label="项目名称">
-              <el-input v-model="form.name" autocomplete="off"></el-input>
+              <el-input v-model="form.name" auto-complete="off"></el-input>
             </el-form-item>
             <el-form-item label="项目目标">
-              <el-input v-model="form.target" autocomplete="off"></el-input>
+              <el-input v-model="form.target" auto-complete="off"></el-input>
             </el-form-item>
             <el-form-item label="项目描述">
-              <el-input v-model="form.desc" rows=10 type="textarea" autocomplete="off"></el-input>
+              <el-input v-model="form.desc" rows=10 type="textarea" auto-complete="off"></el-input>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
