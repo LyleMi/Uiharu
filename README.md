@@ -1,10 +1,19 @@
 # Uiharu
 
-Penetration Auxiliary Tool
+A penetration auxiliary tool.
 
 ## Install
 
+```bash
+git clone https://github.com/LyleMi/Uiharu.git
+docker-compose build
 ```
-mysql -uroot -p < schema/uiharu.sql
-python server.py
-```
+
+## TODO
+
+- Custom HTTP Response
+- HTTP Requests Sender
+- DNS Tools
+- XSS Tools
+- Domain Tools
+    - Subdomain Takeover

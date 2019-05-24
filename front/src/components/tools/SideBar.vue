@@ -10,6 +10,9 @@
         <el-menu-item index="3" @click="jump('/encode')">
           编码
         </el-menu-item>
+        <el-menu-item index="3" @click="jump('/request')">
+          请求发包
+        </el-menu-item>
       </el-menu>
     </div>
 </template>

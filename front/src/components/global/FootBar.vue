@@ -1,6 +1,6 @@
 <template>
   <footer>
-    © 2018
+    © 2018 - 2019
   </footer>
 </template>
 

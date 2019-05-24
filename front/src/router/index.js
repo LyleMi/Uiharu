@@ -7,6 +7,7 @@ import Vuln from '@/layouts/project/vuln'
 import IPConv from '@/layouts/tools/ipconv'
 import Hash from '@/layouts/tools/hash'
 import Encode from '@/layouts/tools/encode'
+import Request from '@/layouts/tools/request'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/encode',
       name: 'Encode',
       component: Encode
+    },
+    {
+      path: '/request',
+      name: 'Request',
+      component: Request
     }
   ]
 })
